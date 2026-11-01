@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Platinum Clicker</title>
+<meta name="theme-color" content="#070d22">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏆%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&display=swap">
+<style>
+:root{--bg:#070d22;--panel:#0e1a42;--line:#24407f;--ice:#9cc2ff;--plat:#e6ecf6;--gold:#f2c14e;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font:500 16px/1.4 Barlow,system-ui,sans-serif;color:var(--plat);background:radial-gradient(900px 600px at 25% 0,#14307a 0,transparent 70%),var(--bg)}
+button{touch-action:manipulation}
+main{display:grid;grid-template-columns:minmax(280px,1fr) minmax(300px,1.1fr);gap:28px;max-width:1100px;margin:0 auto;padding:20px}
+.hero{text-align:center;position:sticky;top:0;align-self:start;padding-top:12px;user-select:none;-webkit-user-select:none}
+h1{font-size:1.2rem;margin:0 0 10px;font-weight:600;color:var(--ice)}
+h2{font-size:1rem;margin:18px 0 8px;color:var(--ice)}
+#n{font-size:clamp(2.2rem,7vw,3.6rem);font-weight:700;line-height:1}
+#ps{color:var(--ice);margin:4px 0 14px}
+#st{color:#7f93c4;font-size:.9rem;margin-top:14px;min-height:1.4em}
+#big{all:unset;cursor:pointer;display:block;margin:0 auto;width:min(290px,68vw);transition:transform .08s;filter:drop-shadow(0 0 28px #3b7bff99);-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+#big:active{transform:scale(.93)}
+#big:focus-visible{outline:3px solid var(--ice);outline-offset:8px;border-radius:14px}
+.list{display:grid;gap:8px}
+.it{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;font:inherit;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;cursor:pointer}
+.it:disabled{opacity:.45;cursor:not-allowed}
+.it:not(:disabled):hover{border-color:var(--ice)}
+.it:focus-visible{outline:2px solid var(--ice)}
+.it b{display:block;font-size:1.05rem}
+.it small{color:#9db0d8;font-size:.88rem}
+.o{font-size:1.9rem;font-weight:700;color:#4f6fb8}
+.pr{color:var(--gold);font-weight:600;white-space:nowrap}
+.mut{color:#7f93c4;margin:0}
+.ach{display:flex;flex-wrap:wrap;gap:8px}
+.ach span{width:44px;height:44px;display:grid;place-items:center;font-size:1.5rem;background:var(--panel);border:1px solid var(--line);border-radius:10px;filter:grayscale(1);opacity:.35}
+.ach .on{filter:none;opacity:1;border-color:var(--gold)}
+#rs{font:inherit;font-size:.85rem;color:#7f93c4;background:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer;margin-top:22px}
+#toast{position:fixed;top:14px;left:50%;transform:translate(-50%,-160%);transition:transform .35s;background:#0b1330f2;border:1px solid var(--ice);border-radius:40px;padding:9px 20px;z-index:9;box-shadow:0 8px 30px #000a;max-width:92vw;text-align:center}
+#toast.on{transform:translate(-50%,0)}
+.f{position:fixed;pointer-events:none;font-weight:700;font-size:1.4rem;color:#fff;text-shadow:0 0 8px #3b7bff;animation:up 1s ease-out forwards;z-index:5}
+@keyframes up{to{transform:translateY(-80px);opacity:0}}
+.rare{position:fixed;z-index:6;font-size:3rem;background:none;border:0;cursor:pointer;filter:drop-shadow(0 0 14px var(--gold));animation:pop .8s infinite alternate}
+@keyframes pop{to{transform:scale(1.2) rotate(8deg)}}
+@media(max-width:760px){main{grid-template-columns:1fr}.hero{position:static}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <h1>Platinum Clicker</h1>
+    <div id="n">0</div>
+    <div id="ps"></div>
+    <button id="big" aria-label="Cliquer sur le trophée platine">
+      <svg viewBox="0 0 200 220" aria-hidden="true">
+        <defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#c9d5e8"/><stop offset=".7" stop-color="#8da2c4"/><stop offset="1" stop-color="#e9eff9"/></linearGradient></defs>
+        <g fill="url(#g)" stroke="url(#g)">
+          <path d="M55 28h90v52c0 32-20 52-45 52S55 112 55 80z" stroke="none"/>
+          <path d="M55 44H33c-2 36 10 52 32 58M145 44h22c2 36-10 52-32 58" fill="none" stroke-width="10" stroke-linecap="round"/>
+          <path d="M92 128h16v30H92z" stroke="none"/>
+          <path d="M72 156h56l6 14H66zM60 170h80a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H60a4 4 0 0 1-4-4v-10a4 4 0 0 1 4-4z" stroke="none"/>
+        </g>
+        <polygon points="100,52 104.7,65.5 119,65.8 107.6,74.5 111.8,88.2 100,80 88.2,88.2 92.4,74.5 81,65.8 95.3,65.5" fill="#0b2a66"/>
+        <path d="M66 40c-3 30 2 56 18 70" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div id="st"></div>
+  </section>
+  <section>
+    <h2>Améliorations</h2><div class="list" id="up"></div>
+    <h2>Boutique</h2><div class="list" id="sh"></div>
+    <h2>Vitrine de trophées</h2><div class="ach" id="ac"></div>
+    <button id="rs">Recommencer à zéro</button>
+  </section>
+</main>
+<div id="toast" role="status"></div>
+<script>
+const $=s=>document.querySelector(s),K='platinum-clicker-v1';
+const B=[['Manette DualSense',15,.1],['Guide de soluces',100,1],['Chasseur de trophées',1100,8],['Service de boost',12e3,47],['Streamer Twitch',13e4,260],['Équipe de speedrun',14e5,1400],['Studio de jeux faciles',2e7,7800],['Faille du PSN',33e7,44e3]];
+let S={p:0,t:0,c:0,b:B.map(()=>0),u:[],a:[],x:0},wipe=0,key='',tt;
+try{Object.assign(S,JSON.parse(localStorage.getItem(K)))}catch(e){}
+const has=id=>S.u.includes(id);
+
+// Améliorations : 4 pour les clics + 2 niveaux par bâtiment
+const U=[['Manette Pro',100],['Gâchettes dorées',1e3],['Pouce bionique',1e4],['Doigts de platine',1e5]]
+  .map(([n,c],i)=>({id:'c'+i,n,c,d:'Clics ×2',v:()=>S.t>=c/2}));
+B.forEach(([n,c],i)=>[[1,10],[10,50]].forEach(([k,m],j)=>
+  U.push({id:'b'+i+j,n:n+' '+'★'.repeat(j+1),c:c*m,d:'Production ×2',v:()=>S.b[i]>=k})));
+
+// Trophées à débloquer
+const A=[['🥉','Première platine',()=>S.t>=1],['🥉','100 clics',()=>S.c>=100],['🥈','1 000 platines',()=>S.t>=1e3],
+['🥈','10 platines par seconde',()=>cps()>=10],['🥇','1 million de platines',()=>S.t>=1e6],['🥇','1 000 par seconde',()=>cps()>=1e3],
+['🏆','Collection complète',()=>S.b.every(n=>n)],['🏆','1 milliard de platines',()=>S.t>=1e9]];
+
+const N=['million','milliard','billion','billiard','trillion','trilliard','quadrillion'];
+const f=(n,d=0)=>{if(n<1e6)return n.toLocaleString('fr-FR',{maximumFractionDigits:d});const i=Math.min(6,Math.floor(Math.log10(n)/3)-2),x=n/10**(3*i+6);return x.toLocaleString('fr-FR',{maximumFractionDigits:2})+' '+N[i]+(x>=2?'s':'')};
+const rate=i=>B[i][2]*(has('b'+i+0)?2:1)*(has('b'+i+1)?2:1);
+const cps=()=>B.reduce((s,_,i)=>s+S.b[i]*rate(i),0)*(S.x>Date.now()?7:1);
+const cl=()=>2**U.filter(u=>u.id[0]=='c'&&has(u.id)).length;
+const cost=i=>Math.ceil(B[i][1]*1.15**S.b[i]);
+const add=n=>{S.p+=n;S.t+=n};
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),3500)}
+
+const sh=$('#sh'),up=$('#up'),ac=$('#ac');
+sh.innerHTML=B.map(([n],i)=>`<button class="it" data-i="${i}"><span><b>${n}</b><small></small></span><span class="o"></span></button>`).join('');
+ac.innerHTML=A.map(([e,n])=>`<span title="${n}">${e}</span>`).join('');
+S.a.forEach(i=>ac.children[i]&&ac.children[i].classList.add('on'));
+
+sh.onclick=e=>{const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i,c=cost(i);if(S.p>=c){S.p-=c;S.b[i]++;ui()}};
+up.onclick=e=>{const b=e.target.closest('button');if(!b)return;const u=U.find(u=>u.id==b.dataset.id);if(u&&S.p>=u.c){S.p-=u.c;S.u.push(u.id);ui()}};
+
+$('#big').onclick=e=>{
+  const g=cl(),r=e.currentTarget.getBoundingClientRect(),x=e.detail?e.clientX:r.left+r.width/2,y=e.detail?e.clientY:r.top+r.height/2;
+  add(g);S.c++;
+  const s=document.createElement('span');s.className='f';s.textContent='+'+f(g);
+  s.style.left=x-10+'px';s.style.top=y-30+'px';s.onanimationend=()=>s.remove();document.body.append(s);
+  ui();
+};
+
+function check(){A.forEach(([e,n,t],i)=>{if(!S.a.includes(i)&&t()){S.a.push(i);ac.children[i].classList.add('on');toast(e+' Trophée débloqué : '+n)}})}
+
+function ui(){
+  const p=Math.floor(S.p);
+  $('#n').textContent=f(p);
+  $('#ps').textContent=f(cps(),1)+' par seconde'+(S.x>Date.now()?' (ruée ×7)':'');
+  $('#st').textContent=S.t?'Clics : '+f(S.c)+' – Total gagné : '+f(Math.floor(S.t)):'Cliquez sur le trophée pour décrocher votre première platine.';
+  document.title=f(p)+' platines – Platinum Clicker';
+  [...sh.children].forEach((b,i)=>{const c=cost(i);b.disabled=S.p<c;b.querySelector('small').textContent=f(c)+' platines, +'+f(rate(i),1)+'/s chacun';b.lastChild.textContent=S.b[i]||''});
+  const vis=U.filter(u=>!has(u.id)&&u.v()),k=vis.map(u=>u.id).join();
+  if(k!=key){key=k;up.innerHTML=vis.length?vis.map(u=>`<button class="it" data-id="${u.id}"><span><b>${u.n}</b><small>${u.d}</small></span><span class="pr"></span></button>`).join(''):'<p class="mut">Rien pour l’instant : achetez des bâtiments pour en débloquer.</p>'}
+  up.querySelectorAll('button').forEach(b=>{const u=U.find(u=>u.id==b.dataset.id);b.disabled=S.p<u.c;b.lastChild.textContent=f(u.c)});
+}
+
+// Trophée rare : ruée ×7 pendant 30 s, ou gros bonus immédiat
+function rare(){
+  const e=document.createElement('button');e.className='rare';e.textContent='🏆';e.setAttribute('aria-label','Trophée rare');
+  e.style.left=10+Math.random()*75+'vw';e.style.top=15+Math.random()*65+'vh';
+  e.onclick=()=>{
+    if(Math.random()<.5){S.x=Date.now()+3e4;toast('Ruée sur les trophées : production ×7 pendant 30 s')}
+    else{const g=Math.max(cps()*300,50*cl());add(g);toast('Platine à 100 % : +'+f(g)+' platines')}
+    e.remove();ui();
+  };
+  document.body.append(e);setTimeout(()=>e.remove(),12e3);
+  setTimeout(rare,45e3+Math.random()*9e4);
+}
+setTimeout(rare,3e4);
+
+const save=()=>{if(!wipe)try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+$('#rs').onclick=()=>{if(confirm('Effacer toute votre progression ?')){wipe=1;try{localStorage.removeItem(K)}catch(e){}location.reload()}};
+addEventListener('beforeunload',save);
+addEventListener('visibilitychange',()=>document.hidden&&save());
+setInterval(save,1e4);
+
+let last=Date.now();
+setInterval(()=>{const n=Date.now(),dt=Math.min((n-last)/1e3,3600);last=n;add(cps()*dt);check();ui()},100);
+ui();
+</script>
+</body>
+</html>
